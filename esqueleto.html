@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focustree - Organizador de aprendizaje</title>
+    <link rel="stylesheet" href="css/styless.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Focustree</h1>
+        <nav aria-label="Navegación principal">
+            <a href="#bienvenida">Inicio</a> | 
+            <a href="#about-us">Sobre nosotros</a> | 
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- MAIN: Contenido principal de la página -->
+    <main>
+        
+        <!-- SECCIÓN 1: HERO / BIENVENIDA -->
+        <section id="bienvenida">
+            <h2>Organiza lo que aprendes, no lo que olvidas</h2>
+            <a href="#about-us" class="btn-inicio">Empezar</a>
+        </section>
+
+        <!-- SECCIÓN 2: ABOUT US -->
+        <section id="about-us">
+            <h2>¿Qué es Focustree?</h2>
+            <p>Focustree es una app web enfocada para estudiantes autodidactas que quieran organizar su tiempo de estudio de manera eficiente.</p>
+            
+            <!-- SUBSECCIÓN 2.1: Qué hace (ANIDADA dentro de about-us) -->
+            <section id="que-hace">
+                <h3>¿Qué hace Focustree?</h3>
+                <img src="imagenes/vagabond3.jpg" alt="Interfaz de Focustree mostrando organización de notas y progreso">
+                <ul>
+                    <li> Guardar notas</li>
+                    <li> Pregunta a la IA</li>
+                    <li> Mira tu progreso</li>
+                </ul>
+            </section>
+            
+            <!-- SUBSECCIÓN 2.2: Beneficios (ANIDADA dentro de about-us) -->
+            <section id="beneficios">
+                <h3>Beneficios de usar Focustree</h3>
+                <ul>
+                    <li>Organiza tus apuntes en un solo lugar</li>
+                    <li>Recibe respuestas de IA para tus dudas</li>
+                    <li>Visualiza tu progreso de aprendizaje</li>
+                    <li>Gestiona tu tiempo de estudio</li>
+                </ul>
+            </section>
+            
+            <!-- SUBSECCIÓN 2.3: Para quién es (ANIDADA dentro de about-us) -->
+            <section id="para-quien">
+                <h3>¿Para quién es Focustree?</h3>
+                <p>Estudiantes autodidactas que quieren organizar su tiempo de estudio, mejorar su productividad y tener un seguimiento claro de su progreso.</p>
+            </section>
+        </section>
+
+        <!-- SECCIÓN 3: CONTACTO -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>¿Tienes preguntas? Escríbenos y te responderemos lo antes posible.</p>
+            
+            <form action="#" method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                
+                <button type="submit">Enviar mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER: Pie de página -->
+    <footer>
+        <p> 2026 Focustree. Todos los derechos reservados.</p>
+        <p>Desarrollado por el Equipo de Jóvenes Creativos.</p>
+    </footer>
+
+</body>
+</html>
