@@ -1,20 +1,41 @@
-const impuesto = 19;
-let precio = 1000;
-const nombreTienda = "S.O.S CONTROL "
-let cantProducto = 12;
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Manejo del Formulario de Contacto
+    const contactForm = document.getElementById('contact-form');
+    const feedback = document.getElementById('form-feedback');
 
-function stock (cant){
- let stock = cant > 0;
-}
-//aritmeticos
-let total = precio + 200; //suma
-let mitad = precio / 2;//division
-let descuento = precio *0.10; //descuento del 10%
-let descuento2 = precio - (precio *10/100); // descuento del 10%
-let modulo = 20 % 2;
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            
+            feedback.textContent = `¡Gracias, ${nombre}! Hemos recibido tu mensaje con éxito.`;
+            feedback.style.color = 'green';
+            contactForm.reset();
+        });
+    }
 
-// comparaciones
-let esCaro = precio > 9000; // true o false 
-let gratis = precio === 0 //true o false 
-let valstock = stock (cantProducto); //true o false
-console.log("¡Conexión exitosa con JavaScript!"); 
+    // 2. Funcionalidad del Tutor IA Focustree
+    const iaBtn = document.getElementById('ia-btn');
+    const iaInput = document.getElementById('ia-input');
+    const iaResponse = document.getElementById('ia-response');
+
+    if (iaBtn) {
+        iaBtn.addEventListener('click', () => {
+            const query = iaInput.value.trim();
+            if (!query) {
+                iaResponse.textContent = "Por favor ingresa una pregunta o concepto.";
+                return;
+            }
+
+            // Estado de Carga (Requisito UX)
+            iaResponse.textContent = "Procesando respuesta del tutor Focustree IA...";
+            iaBtn.disabled = true;
+
+            setTimeout(() => {
+                iaResponse.textContent = `Focustree IA: "Para aprender sobre '${query}', te sugiero dividir el concepto en 3 bloques clave y registrar un apunte corto en tu panel de control."`;
+                iaBtn.disabled = false;
+                iaInput.value = '';
+            }, 1200);
+        });
+    }
+});
