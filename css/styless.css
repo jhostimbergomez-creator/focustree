@@ -8,12 +8,18 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #0d656b;
 }
 
-/* Header */
+
 header {
-    background: #2c3e50;
+    background:radial-gradient(
+        circle ,
+         #3f3cff 0%,
+          #2c159c 40%,
+          #1a0c5c 75%,
+          #11083a 100%
+          );
     color: white;
     padding: 1rem;
     text-align: center;
@@ -24,7 +30,7 @@ header h1 {
 }
 
 nav a {
-    color: white;
+    color: #f6f1f1;
     text-decoration: none;
     margin: 0 0.5rem;
 }
