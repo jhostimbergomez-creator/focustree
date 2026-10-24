@@ -1,147 +1,254 @@
+/* ==========================================================
+   Focustree – estilos compartidos (home, dashboard, admin)
+   Orden del archivo:
+   1. Variables  2. Base  3. Header/Footer  4. Botones y formularios
+   5. Home  6. Dashboard  7. Admin  8. Responsive
+   ========================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* 1. VARIABLES ------------------------------------------------
+   Todos los colores viven aquí. Si quieres cambiar el tema,
+   solo tocas este bloque. */
+:root {
+    --bg: #070b18;
+    --surface: #0d1329;
+    --surface-2: #121a38;
+    --line: #1f2a54;
+    --blue: #3b6bff;
+    --cyan: #38d5ff;
+    --text: #e8ecff;
+    --muted: #8f9acb;
+    --danger: #ff5d7a;
+    --ok: #3ddc97;
+    --radius: 12px;
+    --glow: 0 0 0 1px rgba(59, 107, 255, .45), 0 0 28px rgba(59, 107, 255, .25);
+    --ease: .22s ease;
 }
+
+/* 2. BASE ----------------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "IBM Plex Sans", Arial, sans-serif;
     line-height: 1.6;
-    color: #0d656b;
+    color: var(--text);
+    background-color: var(--bg);
+    /* Cuadrícula: dos gradientes lineales que forman líneas cada 44px */
+    background-image:
+        radial-gradient(ellipse at 15% -10%, rgba(59, 107, 255, .28), transparent 55%),
+        linear-gradient(rgba(143, 154, 203, .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(143, 154, 203, .07) 1px, transparent 1px);
+    background-size: auto, 44px 44px, 44px 44px;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
+h1, h2, h3 { font-family: "Space Grotesk", Arial, sans-serif; line-height: 1.15; }
+a { color: var(--cyan); }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 
-header {
-    background:radial-gradient(
-        circle ,
-         #3f3cff 0%,
-          #2c159c 40%,
-          #1a0c5c 75%,
-          #11083a 100%
-          );
-    color: white;
-    padding: 1rem;
-    text-align: center;
+.contenedor { width: min(1100px, 100% - 2rem); margin-inline: auto; }
+
+/* 3. HEADER / FOOTER ----------------------------------------- */
+header.barra {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(7, 11, 24, .82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
 }
-
-header h1 {
-    font-size: 2rem;
+header.barra .contenedor {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding: .8rem 0; flex-wrap: wrap;
 }
-
+.logo {
+    font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.35rem;
+    color: var(--text); text-decoration: none;
+}
+.logo span { color: var(--cyan); }
 nav a {
-    color: #f6f1f1;
-    text-decoration: none;
-    margin: 0 0.5rem;
+    color: var(--muted); text-decoration: none; margin-left: 1.2rem;
+    transition: color var(--ease);
 }
+nav a:hover, nav a[aria-current="page"] { color: var(--text); }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Secciones */
-section {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-}
-
-section h3 {
-    font-size: 1.4rem;
-    margin: 1.5rem 0 0.5rem;
-    color: #34495e;
-}
-
-/* Hero */
-#bienvenida {
-    background: #3498db;
-    color: white;
-    text-align: center;
-    padding: 4rem 2rem;
-}
-
-#bienvenida h2 {
-    color: white;
-}
-
-.btn-inicio {
-    display: inline-block;
-    background: white;
-    color: #3498db;
-    padding: 0.8rem 2rem;
-    border-radius: 30px;
-    text-decoration: none;
-    margin-top: 1rem;
-    font-weight: bold;
-}
-
-.btn-inicio:hover {
-    background: #ecf0f1;
-}
-
-/* About Us */
-#about-us ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-#about-us li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #ecf0f1;
-}
-
-#about-us img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin: 1rem 0;
-}
-
-/* Contacto */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-label {
-    font-weight: bold;
-}
-
-input, textarea {
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-button {
-    background: #2c3e50;
-    color: white;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-button:hover {
-    background: #34495e;
-}
-
-/* Footer */
 footer {
-    background: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
+    border-top: 1px solid var(--line);
+    text-align: center; color: var(--muted);
+    padding: 1.5rem 1rem; margin-top: 4rem; font-size: .9rem;
+}
+
+/* 4. BOTONES Y FORMULARIOS ----------------------------------- */
+.btn {
+    display: inline-block; cursor: pointer; text-decoration: none;
+    font: 600 1rem "IBM Plex Sans", sans-serif;
+    color: #fff; background: var(--blue);
+    padding: .75rem 1.6rem; border: 0; border-radius: 999px;
+    transition: transform var(--ease), box-shadow var(--ease), background var(--ease);
+}
+.btn:hover { box-shadow: var(--glow); transform: translateY(-1px); }
+.btn:disabled { opacity: .5; cursor: wait; transform: none; box-shadow: none; }
+.btn-sec { background: transparent; border: 1px solid var(--line); color: var(--text); }
+.btn-sec:hover { border-color: var(--blue); }
+.btn-peligro { background: transparent; border: 1px solid var(--danger); color: var(--danger); }
+.btn-peligro:hover { box-shadow: 0 0 20px rgba(255, 93, 122, .3); }
+.btn-chico { padding: .4rem 1rem; font-size: .9rem; }
+
+form { display: flex; flex-direction: column; gap: .5rem; }
+label { font-weight: 600; font-size: .95rem; margin-top: .6rem; }
+input, textarea {
+    font: inherit; color: var(--text);
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: 8px; padding: .7rem .85rem;
+    transition: border-color var(--ease), box-shadow var(--ease);
+}
+input:focus, textarea:focus { outline: none; border-color: var(--blue); box-shadow: var(--glow); }
+textarea { resize: vertical; }
+
+.mensaje { min-height: 1.4rem; font-size: .95rem; margin-top: .5rem; }
+.mensaje.ok { color: var(--ok); }
+.mensaje.error { color: var(--danger); }
+
+/* 5. HOME ----------------------------------------------------- */
+.hero {
+    display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem;
+    align-items: center; padding: 5rem 0 3rem;
+}
+.hero h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); margin-bottom: 1.2rem; }
+.hero p { color: var(--muted); font-size: 1.15rem; max-width: 46ch; margin-bottom: 2rem; }
+
+/* Tarjeta de ejemplo en el hero: muestra cómo se ve una clase */
+.ejemplo {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 1.3rem; box-shadow: var(--glow);
+}
+.ejemplo small { color: var(--muted); }
+.ejemplo h3 { margin: .2rem 0 .8rem; font-size: 1.2rem; }
+.ejemplo dt { color: var(--cyan); font-size: .85rem; margin-top: .6rem; }
+.ejemplo dd { color: var(--text); }
+.ejemplo .ia-burbuja {
+    margin-top: 1rem; padding: .8rem; border-radius: 8px;
+    background: var(--surface-2); border-left: 3px solid var(--blue); font-size: .92rem;
+}
+
+.seccion { padding: 3rem 0; }
+.seccion > h2 { font-size: 2rem; margin-bottom: .6rem; }
+.seccion > .intro { color: var(--muted); margin-bottom: 1.8rem; max-width: 60ch; }
+
+.tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.tarjeta {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 1.5rem;
+    transition: box-shadow var(--ease), transform var(--ease), border-color var(--ease);
+}
+.tarjeta:hover { box-shadow: var(--glow); border-color: var(--blue); transform: translateY(-3px); }
+.tarjeta h3 { margin-bottom: .5rem; font-size: 1.2rem; }
+.tarjeta p { color: var(--muted); }
+
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.about details {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: .8rem 1rem; margin-bottom: .6rem;
+}
+.about summary { cursor: pointer; font-weight: 600; }
+.about details p { color: var(--muted); margin-top: .5rem; }
+.about ul { padding-left: 1.2rem; color: var(--muted); }
+
+.contacto-caja {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 2rem; max-width: 560px;
+}
+
+/* 6. DASHBOARD ------------------------------------------------ */
+.espacio {
+    display: grid; grid-template-columns: 290px 1fr; gap: 1.2rem;
+    padding: 1.5rem 0; min-height: calc(100vh - 140px);
+}
+.panel {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 1.2rem;
+}
+.panel h2 { font-size: 1.2rem; margin-bottom: .8rem; }
+
+.lista-cats { list-style: none; display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1rem; }
+.cat-btn {
+    width: 100%; text-align: left; cursor: pointer;
+    font: inherit; color: var(--text); background: transparent;
+    border: 1px solid transparent; border-radius: 8px; padding: .55rem .7rem;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background var(--ease), border-color var(--ease);
+}
+.cat-btn:hover { background: var(--surface-2); }
+.cat-btn.activa { background: var(--surface-2); border-color: var(--blue); box-shadow: var(--glow); }
+.cat-btn .num { color: var(--muted); font-size: .85rem; }
+
+.form-inline { flex-direction: row; gap: .5rem; }
+.form-inline input { flex: 1; min-width: 0; }
+
+.vacio {
+    text-align: center; color: var(--muted); padding: 3rem 1rem;
+    border: 1px dashed var(--line); border-radius: var(--radius);
+}
+.vacio strong { display: block; color: var(--text); font-size: 1.15rem; margin-bottom: .4rem; }
+
+.cabecera-cat { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.cabecera-cat h2 { font-size: 1.6rem; margin: 0; }
+
+.grid-clases { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+.clase-card {
+    cursor: pointer; text-align: left; font: inherit; color: var(--text);
+    background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 1rem;
+    transition: box-shadow var(--ease), transform var(--ease), border-color var(--ease);
+}
+.clase-card:hover { box-shadow: var(--glow); border-color: var(--blue); transform: translateY(-2px); }
+.clase-card small { color: var(--muted); display: block; }
+.clase-card h3 { font-size: 1.1rem; margin: .2rem 0 .5rem; }
+.etiqueta-pend { color: var(--danger); font-size: .85rem; }
+.etiqueta-ok { color: var(--ok); font-size: .85rem; }
+
+/* Panel desplegable del formulario (usa <details>, sin JS extra) */
+.desplegable { margin-bottom: 1rem; }
+.desplegable > summary { list-style: none; cursor: pointer; }
+.desplegable > summary::-webkit-details-marker { display: none; }
+.desplegable[open] > summary { margin-bottom: 1rem; }
+
+.detalle h3 { font-size: 1.5rem; margin-bottom: .2rem; }
+.detalle .bloque { margin-top: 1rem; }
+.detalle .bloque h4 { color: var(--cyan); font-size: .95rem; margin-bottom: .2rem; }
+.detalle .bloque p { white-space: pre-wrap; }
+
+.ia-panel {
+    margin-top: 1.5rem; padding: 1.2rem; border-radius: var(--radius);
+    background: var(--bg); border: 1px solid var(--blue); box-shadow: var(--glow);
+}
+.ia-panel h4 { margin-bottom: .6rem; }
+.ia-botones { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: .8rem; }
+.ia-salida {
+    white-space: pre-wrap; background: var(--surface); border-radius: 8px;
+    padding: .9rem; min-height: 3.2rem; color: var(--text);
+}
+.ia-salida.cargando { color: var(--muted); animation: pulso 1s infinite alternate; }
+@keyframes pulso { from { opacity: .45; } to { opacity: 1; } }
+
+/* 7. ADMIN ---------------------------------------------------- */
+.login-caja { max-width: 400px; margin: 5rem auto; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.stat { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; }
+.stat b { font: 700 2rem "Space Grotesk", sans-serif; color: var(--cyan); display: block; }
+.msg-item {
+    background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 1rem; margin-bottom: .8rem;
+}
+.msg-item header { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: .4rem; }
+.msg-item small { color: var(--muted); }
+
+/* 8. RESPONSIVE + MOVIMIENTO REDUCIDO ------------------------- */
+@media (max-width: 800px) {
+    .hero, .about, .tarjetas, .espacio, .stats { grid-template-columns: 1fr; }
+    .hero { padding-top: 2.5rem; }
+    nav a { margin: 0 .8rem 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
 }
