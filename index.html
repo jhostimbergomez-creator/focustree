@@ -3,105 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focustree - Organizador de aprendizaje</title>
+    <title>Focustree – Organiza lo que aprendes</title>
+    <meta name="description" content="Guarda tus clases por categoría y consulta tus propios apuntes con IA.">
+    <!-- Tipografías: Space Grotesk (títulos) + IBM Plex Sans (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styless.css">
+    <!-- Orden importa: storage.js primero porque script.js lo usa -->
+    <script src="js/storage.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1>Focustree</h1>
+<header class="barra">
+    <div class="contenedor">
+        <a class="logo" href="index.html">Focus<span>tree</span></a>
         <nav aria-label="Navegación principal">
-            <a href="#bienvenida">Inicio</a> | 
-            <a href="#about-us">Sobre nosotros</a> | 
+            <a href="#que-es">Qué es</a>
+            <a href="#about-us">Sobre nosotros</a>
             <a href="#contacto">Contacto</a>
+            <a href="dashboard.html">Dashboard</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <!-- MAIN -->
-    <main>
-        
-        <!-- hero-->
-        <section id="bienvenida">
-            <h2>Organiza lo que aprendes, no lo que olvidas</h2>
-            <a href="dashboard.html" class="btn-inicio">Empezar</a>
-        </section>
+<main>
+    <!-- HERO -->
+    <section class="contenedor hero" id="bienvenida">
+        <div>
+            <h1>Organiza lo que aprendes, no lo que olvidas</h1>
+            <p>Guarda cada clase en su categoría y pregúntale a una IA que solo conoce lo que tú escribiste.</p>
+            <a href="dashboard.html" class="btn">Comenzar</a>
+        </div>
 
-        <!-- SECCIÓN 2: ABOUT US -->
-        <section id="about-us">
-            <h2>¿Qué es Focustree?</h2>
-            <p>Focustree es una app web enfocada para estudiantes autodidactas que quieran organizar su tiempo de estudio de manera eficiente.</p>
-            
-            <!-- SUBSECCIÓN 2.1: Qué hace  -->
-            <section id="que-hace">
-                <h3>¿Qué hace Focustree?</h3>
-                <img src="imagenes/vagabond3.jpg" alt="Interfaz de Focustree mostrando organización de notas y progreso">
-                 <ul>
-                    <li>
-                         <details>
-                            <summary>guardar notas</summary>
-                    <p>focustree te permite guardar lo que aprendes</p> 
-                    </details> 
-                    </li>
-                    <li>
-                    <details>
-                        <summary>pregunta a la IA</summary>
-                        <p>focustree te permite preguntar a la IA tus dudas</p>
-                     </details>
-                     </li>
-                    </li>
-                    <li>
-                    <details>
-                        <summary>mira tu progreso</summary>
-                        <p>focustree te permite ver tu progreso de aprendizaje</p>
-                     </details>
-                     </li>
-                 </ul>
-            </section>
+        <!-- Ejemplo visual de una clase: enseña el producto sin explicarlo -->
+        <aside class="ejemplo" aria-label="Ejemplo de una clase guardada">
+            <small>Java · 14 de octubre</small>
+            <h3>Herencia y polimorfismo</h3>
+            <dl>
+                <dt>Qué aprendí</dt>
+                <dd>Una subclase reutiliza los métodos de la clase padre.</dd>
+                <dt>Qué no entendí</dt>
+                <dd>Cuándo usar una interfaz en vez de una clase abstracta.</dd>
+            </dl>
+            <div class="ia-burbuja">Todavía no tienes claro este punto. Repasa interfaces antes de tu próxima clase.</div>
+        </aside>
+    </section>
 
-            <section id="beneficios">
-                <h3>Beneficios de usar Focustree</h3>
+    <!-- TRES TARJETAS -->
+    <section class="contenedor seccion" id="que-es">
+        <div class="tarjetas">
+            <article class="tarjeta">
+                <h3>Organiza tus estudios</h3>
+                <p>Crea una categoría por cada cosa que estudias: Java, inglés, universidad, electrónica.</p>
+            </article>
+            <article class="tarjeta">
+                <h3>Guarda todo lo que aprendes</h3>
+                <p>Cada clase registra fecha, tema, lo que aprendiste y lo que aún no entiendes.</p>
+            </article>
+            <article class="tarjeta">
+                <h3>Consulta tus apuntes con IA</h3>
+                <p>Resume una clase, genera preguntas de estudio o busca un concepto en tus notas.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="contenedor seccion" id="about-us">
+        <h2>Sobre nosotros</h2>
+        <p class="intro">Focustree nace para quien estudia muchas cosas a la vez y no quiere perder el hilo de su propio aprendizaje.</p>
+        <div class="about">
+            <div>
+                <details open>
+                    <summary>Guardar notas</summary>
+                    <p>Escribe cada clase con sus dudas y quedan ordenadas por categoría.</p>
+                </details>
+                <details>
+                    <summary>Preguntar a la IA</summary>
+                    <p>La IA responde solo con tus apuntes, no con información de internet.</p>
+                </details>
+                <details>
+                    <summary>Ver tu progreso</summary>
+                    <p>Cada clase muestra si quedó algo pendiente por entender.</p>
+                </details>
+            </div>
+            <div>
+                <h3>Para quién es</h3>
+                <p class="intro">Estudiantes autodidactas que quieren seguir su avance con claridad.</p>
                 <ul>
                     <li>Organiza tus apuntes en un solo lugar</li>
-                    <li>Recibe respuestas de IA para tus dudas</li>
-                    <li>Visualiza tu progreso de aprendizaje</li>
-                    <li>Gestiona tu tiempo de estudio</li>
+                    <li>Detecta lo que todavía no entiendes</li>
+                    <li>Repasa con preguntas hechas desde tus notas</li>
                 </ul>
-            </section>
-            
-            <!-- SUBSECCIÓN 2.3: Para quién es -->
-            <section id="para-quien">
-                <h3>¿Para quién es Focustree?</h3>
-                <p>Estudiantes autodidactas que quieren organizar su tiempo de estudio, mejorar su productividad y tener un seguimiento claro de su progreso.</p>
-            </section>
-        </section>
+            </div>
+        </div>
+    </section>
 
-        <!-- SECCIÓN 3: CONTACTO -->
-        <section id="contacto">
-            <h2>Contacto</h2>
-            <p>¿Tienes preguntas? Escríbenos y te responderemos lo antes posible.</p>
-            
-            <form action="#" method="POST">
-                <label for="nombre">Nombre:</label>
+    <!-- CONTACTO -->
+    <section class="contenedor seccion" id="contacto">
+        <h2>Contacto</h2>
+        <p class="intro">Escríbenos y te respondemos lo antes posible.</p>
+        <div class="contacto-caja">
+            <!-- novalidate: validamos nosotros en JS para mostrar errores claros -->
+            <form id="contact-form" novalidate>
+                <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-                
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                
-                <button type="submit">Enviar mensaje</button>
-            </form>
-        </section>
-    </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p> 2026 Focustree. Todos los derechos reservados.</p>
-        <p>Desarrollado por el Equipo de Jóvenes Creativos.</p>
-    </footer>
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+
+                <button type="submit" class="btn" id="contact-btn">Enviar mensaje</button>
+                <p id="form-feedback" class="mensaje" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Focustree. Todos los derechos reservados.</p>
+    <p>Desarrollado por el equipo de Jóvenes Creativos · <a href="admin.html">Admin</a></p>
+</footer>
 
 </body>
 </html>
