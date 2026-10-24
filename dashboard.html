@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> focustree</title>
-
+    <title>Dashboard – Focustree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styless.css">
+    <!-- Orden: datos → IA → lógica de la pantalla -->
+    <script src="js/storage.js" defer></script>
+    <script src="js/ia.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1> 
-            focustree
-            <nav aria-label="Navegación principal">
-                <a href="index.html">Inicio</a> | 
-                <a href="dashboard.html">Panel de Control</a> | 
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </h1>
 
-    </header>
+<header class="barra">
+    <div class="contenedor">
+        <a class="logo" href="index.html">Focus<span>tree</span></a>
+        <nav aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="dashboard.html" aria-current="page">Dashboard</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+    </div>
+</header>
+
+<main class="contenedor espacio">
+    <!-- IZQUIERDA: categorías -->
+    <aside class="panel" aria-label="Categorías">
+        <h2>Categorías</h2>
+        <ul class="lista-cats" id="lista-cats"></ul>
+
+        <form id="form-cat" class="form-inline" novalidate>
+            <label for="nueva-cat" class="sr-only" hidden>Nombre de la categoría</label>
+            <input type="text" id="nueva-cat" placeholder="Ej: Java" maxlength="30">
+            <button type="submit" class="btn btn-chico">+ Nueva</button>
+        </form>
+        <p id="msg-cat" class="mensaje error" role="alert"></p>
+    </aside>
+
+    <!-- DERECHA: área de trabajo (la dibuja dashboard.js) -->
+    <section class="panel" id="area" aria-live="polite"></section>
+</main>
 
 </body>
 </html>
