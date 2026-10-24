@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin – Focustree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styless.css">
+    <script src="js/storage.js" defer></script>
+    <script src="js/admin.js" defer></script>
+</head>
+<body>
+
+<header class="barra">
+    <div class="contenedor">
+        <a class="logo" href="index.html">Focus<span>tree</span></a>
+        <nav aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="admin.html" aria-current="page">Admin</a>
+        </nav>
+    </div>
+</header>
+
+<main class="contenedor">
+
+    <!-- VISTA 1: login (visible si no hay sesión) -->
+    <section id="vista-login" class="panel login-caja" hidden>
+        <h2>Acceso de administrador</h2>
+        <form id="form-login" novalidate>
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" autocomplete="username">
+            <label for="clave">Contraseña</label>
+            <input type="password" id="clave" autocomplete="current-password">
+            <button type="submit" class="btn">Entrar</button>
+            <p id="msg-login" class="mensaje error" role="alert"></p>
+        </form>
+    </section>
+
+    <!-- VISTA 2: panel privado (visible con sesión) -->
+    <section id="vista-panel" hidden style="padding-top:1.5rem">
+        <div class="cabecera-cat">
+            <h2>Panel de administración</h2>
+            <button id="btn-salir" class="btn btn-sec btn-chico">Cerrar sesión</button>
+        </div>
+
+        <div class="stats" id="stats"></div>
+
+        <div class="panel">
+            <h2>Mensajes de contacto</h2>
+            <div id="lista-mensajes"></div>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>
