@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { api } from '../api'
 
-// Devuelve un texto de error, o '' si todo está bien
 function validar({ nombre, email, mensaje }) {
   if (nombre.length < 2) return 'Escribe tu nombre (mínimo 2 letras).'
   if (!/^\S+@\S+\.\S+$/.test(email)) return 'El correo no es válido. Ejemplo: tu@email.com'
@@ -10,16 +9,14 @@ function validar({ nombre, email, mensaje }) {
 }
 
 function ContactForm() {
-  // Inputs controlados: React guarda lo que escribe el usuario en este estado
   const [datos, setDatos] = useState({ nombre: '', email: '', mensaje: '' })
-  const [aviso, setAviso] = useState({ texto: '', tipo: '' }) // tipo: 'ok' | 'error' | ''
+  const [aviso, setAviso] = useState({ texto: '', tipo: '' }) 
   const [enviando, setEnviando] = useState(false)
 
-  // e.target.name coincide con la clave del estado: un solo manejador para los 3 campos
   const cambiar = (e) => setDatos((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 
   async function enviar(e) {
-    e.preventDefault() // evita que la página se recargue
+    e.preventDefault() 
 
     const limpio = {
       nombre: datos.nombre.trim(),
@@ -29,7 +26,7 @@ function ContactForm() {
     const error = validar(limpio)
     if (error) return setAviso({ texto: error, tipo: 'error' })
 
-    setEnviando(true) // estado de carga
+    setEnviando(true) 
     setAviso({ texto: 'Enviando…', tipo: '' })
     try {
       await api.enviarMensaje(limpio)
@@ -38,7 +35,7 @@ function ContactForm() {
     } catch (err) {
       setAviso({ texto: err.message, tipo: 'error' })
     } finally {
-      setEnviando(false) // pase lo que pase, se reactiva el botón
+      setEnviando(false) 
     }
   }
 

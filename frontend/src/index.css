@@ -1,13 +1,3 @@
-/* ==========================================================
-   Focustree – estilos compartidos (home, dashboard, admin)
-   Orden del archivo:
-   1. Variables  2. Base  3. Header/Footer  4. Botones y formularios
-   5. Home  6. Dashboard  7. Admin  8. Responsive
-   ========================================================== */
-
-/* 1. VARIABLES ------------------------------------------------
-   Todos los colores viven aquí. Si quieres cambiar el tema,
-   solo tocas este bloque. */
 :root {
     --bg: #070b18;
     --surface: #0d1329;
@@ -24,7 +14,6 @@
     --ease: .22s ease;
 }
 
-/* 2. BASE ----------------------------------------------------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -34,7 +23,6 @@ body {
     line-height: 1.6;
     color: var(--text);
     background-color: var(--bg);
-    /* Cuadrícula: dos gradientes lineales que forman líneas cada 44px */
     background-image:
         radial-gradient(ellipse at 15% -10%, rgba(59, 107, 255, .28), transparent 55%),
         linear-gradient(rgba(143, 154, 203, .07) 1px, transparent 1px),
@@ -49,8 +37,6 @@ a { color: var(--cyan); }
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 
 .contenedor { width: min(1100px, 100% - 2rem); margin-inline: auto; }
-
-/* 3. HEADER / FOOTER ----------------------------------------- */
 header.barra {
     position: sticky; top: 0; z-index: 10;
     background: rgba(7, 11, 24, .82);
@@ -78,7 +64,6 @@ footer {
     padding: 1.5rem 1rem; margin-top: 4rem; font-size: .9rem;
 }
 
-/* 4. BOTONES Y FORMULARIOS ----------------------------------- */
 .btn {
     display: inline-block; cursor: pointer; text-decoration: none;
     font: 600 1rem "IBM Plex Sans", sans-serif;
@@ -109,7 +94,6 @@ textarea { resize: vertical; }
 .mensaje.ok { color: var(--ok); }
 .mensaje.error { color: var(--danger); }
 
-/* 5. HOME ----------------------------------------------------- */
 .hero {
     display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem;
     align-items: center; padding: 5rem 0 3rem;
@@ -117,7 +101,6 @@ textarea { resize: vertical; }
 .hero h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); margin-bottom: 1.2rem; }
 .hero p { color: var(--muted); font-size: 1.15rem; max-width: 46ch; margin-bottom: 2rem; }
 
-/* Tarjeta de ejemplo en el hero: muestra cómo se ve una clase */
 .ejemplo {
     background: var(--surface); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 1.3rem; box-shadow: var(--glow);
@@ -158,8 +141,6 @@ textarea { resize: vertical; }
     background: var(--surface); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 2rem; max-width: 560px;
 }
-
-/* 6. DASHBOARD ------------------------------------------------ */
 .espacio {
     display: grid; grid-template-columns: 290px 1fr; gap: 1.2rem;
     padding: 1.5rem 0; min-height: calc(100vh - 140px);
@@ -207,7 +188,6 @@ textarea { resize: vertical; }
 .etiqueta-pend { color: var(--danger); font-size: .85rem; }
 .etiqueta-ok { color: var(--ok); font-size: .85rem; }
 
-/* Panel desplegable del formulario (usa <details>, sin JS extra) */
 .desplegable { margin-bottom: 1rem; }
 .desplegable > summary { list-style: none; cursor: pointer; }
 .desplegable > summary::-webkit-details-marker { display: none; }
@@ -231,7 +211,6 @@ textarea { resize: vertical; }
 .ia-salida.cargando { color: var(--muted); animation: pulso 1s infinite alternate; }
 @keyframes pulso { from { opacity: .45; } to { opacity: 1; } }
 
-/* 7. ADMIN ---------------------------------------------------- */
 .login-caja { max-width: 400px; margin: 5rem auto; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
 .stat { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; }
@@ -243,7 +222,6 @@ textarea { resize: vertical; }
 .msg-item header { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: .4rem; }
 .msg-item small { color: var(--muted); }
 
-/* 8. RESPONSIVE + MOVIMIENTO REDUCIDO ------------------------- */
 @media (max-width: 800px) {
     .hero, .about, .tarjetas, .espacio, .stats { grid-template-columns: 1fr; }
     .hero { padding-top: 2.5rem; }
@@ -253,12 +231,9 @@ textarea { resize: vertical; }
     * { transition: none !important; animation: none !important; }
 }
 
-/* 9. AÑADIDOS PARA REACT ------------------------------------- */
-/* Texto solo para lectores de pantalla (la etiqueta existe pero no se ve) */
 .sr-only {
     position: absolute; width: 1px; height: 1px; overflow: hidden;
     clip: rect(0 0 0 0); white-space: nowrap;
 }
-/* Aviso del modo en que corre la app */
 .aviso-modo { margin-top: .6rem; font-size: .85rem; color: var(--muted); }
 .fila-acciones { display: flex; gap: .5rem; flex-wrap: wrap; }

@@ -1,6 +1,5 @@
 import ContactForm from './ContactForm.jsx'
 
-// Datos de las tarjetas: se pintan con .map() en vez de repetir el mismo HTML tres veces
 const TARJETAS = [
   { titulo: 'Organiza tus estudios', texto: 'Crea una categoría por cada cosa que estudias: Java, inglés, universidad, electrónica.' },
   { titulo: 'Guarda todo lo que aprendes', texto: 'Cada clase registra fecha, tema, lo que aprendiste y lo que aún no entiendes.' },
@@ -22,7 +21,6 @@ const BENEFICIOS = [
 function Home() {
   return (
     <main>
-      {/* HERO */}
       <section className="contenedor hero" id="bienvenida">
         <div>
           <h1>Organiza lo que aprendes, no lo que olvidas</h1>
@@ -30,7 +28,6 @@ function Home() {
           <a href="#/dashboard" className="btn">Comenzar</a>
         </div>
 
-        {/* Ejemplo visual de una clase: enseña el producto sin explicarlo */}
         <aside className="ejemplo" aria-label="Ejemplo de una clase guardada">
           <small>Java · 14 de octubre</small>
           <h3>Herencia y polimorfismo</h3>
@@ -44,7 +41,6 @@ function Home() {
         </aside>
       </section>
 
-      {/* TRES TARJETAS */}
       <section className="contenedor seccion" id="que-es">
         <div className="tarjetas">
           {TARJETAS.map((t) => (
@@ -55,8 +51,6 @@ function Home() {
           ))}
         </div>
       </section>
-
-      {/* SOBRE NOSOTROS */}
       <section className="contenedor seccion" id="about-us">
         <h2>Sobre nosotros</h2>
         <p className="intro">Focustree nace para quien estudia muchas cosas a la vez y no quiere perder el hilo de su propio aprendizaje.</p>
@@ -78,8 +72,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* CONTACTO */}
       <section className="contenedor seccion" id="contacto">
         <h2>Contacto</h2>
         <p className="intro">Escríbenos y te respondemos lo antes posible.</p>

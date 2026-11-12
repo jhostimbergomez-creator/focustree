@@ -4,14 +4,12 @@ import { requerirAdmin } from '../middleware/auth.js'
 
 const router = Router()
 
-// POST /api/mensajes -> PÚBLICO: cualquier visitante envía el formulario de contacto
 router.post('/', async (req, res) => {
   const { nombre, email, mensaje } = req.body ?? {}
   const creado = await Mensaje.create({ nombre, email, mensaje })
   res.status(201).json({ ok: true, id: creado._id })
 })
 
-// GET y DELETE -> PRIVADOS: pasan primero por requerirAdmin
 router.get('/', requerirAdmin, async (req, res) => {
   res.json(await Mensaje.find().sort({ createdAt: -1 }))
 })

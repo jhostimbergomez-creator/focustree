@@ -3,7 +3,6 @@ import { hoy } from '../utils.js'
 
 const vacio = () => ({ fecha: hoy(), tema: '', aprendi: '', noEntendi: '', notas: '' })
 
-// Formulario para crear una clase. No guarda nada por sí mismo: llama a onGuardar (lo recibe por props).
 function ClaseForm({ onGuardar }) {
   const [abierto, setAbierto] = useState(false)
   const [datos, setDatos] = useState(vacio)
@@ -29,8 +28,8 @@ function ClaseForm({ onGuardar }) {
     setError('')
     try {
       await onGuardar(limpio)
-      setDatos(vacio()) // limpia el formulario
-      setAbierto(false) // y lo cierra
+      setDatos(vacio()) 
+      setAbierto(false) 
     } catch (err) {
       setError(err.message)
     } finally {

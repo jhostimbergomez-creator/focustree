@@ -3,8 +3,6 @@ import jwt from 'jsonwebtoken'
 
 const router = Router()
 
-// POST /api/auth/login { usuario, clave } -> { token }
-// Compara con el usuario y la clave guardados en el .env. Si coinciden, entrega un token (pase) por 2 horas.
 router.post('/login', (req, res) => {
   const { usuario, clave } = req.body ?? {}
 

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { api } from '../api'
 
-// Botón "Detectar vacíos" de una categoría + su resultado
 function DetectarVacios({ categoriaId }) {
   const [salida, setSalida] = useState(null)
   const [pensando, setPensando] = useState(false)

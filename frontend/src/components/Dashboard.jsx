@@ -1,8 +1,3 @@
-/* ==========================================================
-   Dashboard – pantalla principal de la app
-   Patrón: el ESTADO (useState) guarda qué hay en pantalla;
-   cada cambio de estado hace que React vuelva a dibujar.
-   ========================================================== */
 import { useEffect, useState } from 'react'
 import { api } from '../api'
 import ClaseForm from './ClaseForm.jsx'
@@ -10,16 +5,13 @@ import ClaseDetalle from './ClaseDetalle.jsx'
 import DetectarVacios from './DetectarVacios.jsx'
 
 function Dashboard() {
-  // Datos
   const [categorias, setCategorias] = useState([])
   const [clases, setClases] = useState([])
-  // Selección actual
   const [catId, setCatId] = useState(null)
   const [claseId, setClaseId] = useState(null)
-  // Estados de la interfaz
   const [cargando, setCargando] = useState(true)
   const [errorCarga, setErrorCarga] = useState('')
-  const [aviso, setAviso] = useState('') // errores de acciones (crear, borrar)
+  const [aviso, setAviso] = useState('') 
   const [nuevaCat, setNuevaCat] = useState('')
   const [errorCat, setErrorCat] = useState('')
 
@@ -27,11 +19,10 @@ function Dashboard() {
     setCargando(true)
     setErrorCarga('')
     try {
-      // Promise.all pide las dos listas al mismo tiempo
       const [cats, cls] = await Promise.all([api.listarCategorias(), api.listarClases()])
       setCategorias(cats)
       setClases(cls)
-      if (cats.length) setCatId(cats[0]._id) // selecciona la primera categoría
+      if (cats.length) setCatId(cats[0]._id) 
     } catch (err) {
       setErrorCarga(err.message)
     } finally {
@@ -39,14 +30,11 @@ function Dashboard() {
     }
   }
 
-  // [] = se ejecuta UNA sola vez, cuando el componente aparece en pantalla
   useEffect(() => { cargar() }, [])
 
-  // Datos derivados: se calculan en cada render a partir del estado (no se guardan aparte)
   const categoria = categorias.find((c) => c._id === catId)
   const clasesCategoria = clases.filter((c) => c.categoriaId === catId)
   const claseActual = clasesCategoria.find((c) => c._id === claseId)
-
   async function crearCategoria(e) {
     e.preventDefault()
     const nombre = nuevaCat.trim()
@@ -56,7 +44,7 @@ function Dashboard() {
     }
     try {
       const nueva = await api.crearCategoria(nombre)
-      setCategorias((prev) => [...prev, nueva]) // se copia el arreglo: nunca se modifica el estado directamente
+      setCategorias((prev) => [...prev, nueva]) 
       setCatId(nueva._id)
       setClaseId(null)
       setNuevaCat('')
@@ -81,7 +69,6 @@ function Dashboard() {
   }
 
   async function guardarClase(datos) {
-    // Si falla, el error sube a ClaseForm, que lo muestra junto al formulario
     const nueva = await api.crearClase({ ...datos, categoriaId: catId })
     setClases((prev) => [nueva, ...prev])
   }
@@ -104,7 +91,6 @@ function Dashboard() {
     setAviso('')
   }
 
-  /* ---------- Qué se dibuja en el área de trabajo ---------- */
   function contenidoArea() {
     if (cargando) return <p className="mensaje" role="status">Cargando tus datos…</p>
 
@@ -138,7 +124,6 @@ function Dashboard() {
         <div className="cabecera-cat">
           <h2>{categoria.nombre}</h2>
           <div className="fila-acciones">
-            {/* key={catId}: al cambiar de categoría, React reinicia este componente y borra su resultado anterior */}
             <DetectarVacios key={catId} categoriaId={catId} />
             <button className="btn btn-peligro btn-chico" onClick={borrarCategoria}>Borrar categoría</button>
           </div>
@@ -169,7 +154,6 @@ function Dashboard() {
 
   return (
     <main className="contenedor espacio">
-      {/* IZQUIERDA: categorías */}
       <aside className="panel" aria-label="Categorías">
         <h2>Categorías</h2>
         <ul className="lista-cats">
@@ -192,8 +176,6 @@ function Dashboard() {
         </form>
         <p className="mensaje error" role="alert">{errorCat}</p>
       </aside>
-
-      {/* DERECHA: área de trabajo */}
       <section className="panel" aria-live="polite">
         {aviso && <p className="mensaje error" role="alert">{aviso}</p>}
         {contenidoArea()}

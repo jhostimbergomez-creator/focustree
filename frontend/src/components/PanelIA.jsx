@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { api } from '../api'
 
-// Panel de IA dentro de una clase abierta
 function PanelIA({ clase }) {
   const [pregunta, setPregunta] = useState('')
-  const [salida, setSalida] = useState(null) // texto de la respuesta, o null si no hay
+  const [salida, setSalida] = useState(null) 
   const [pensando, setPensando] = useState(false)
 
-  // Pide a la IA lo que indique `datos` y muestra la respuesta (o el error)
   async function consultar(datos) {
     setPensando(true)
     setSalida(null)
@@ -16,7 +14,7 @@ function PanelIA({ clase }) {
     } catch (err) {
       setSalida(err.message)
     } finally {
-      setPensando(false) // pase lo que pase, se quita "Pensando…"
+      setPensando(false) 
     }
   }
 

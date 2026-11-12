@@ -4,14 +4,11 @@ import Clase from '../models/Clase.js'
 
 const router = Router()
 
-// GET /api/clases -> todas, la más reciente primero
 router.get('/', async (req, res) => {
   res.json(await Clase.find().sort({ fecha: -1, createdAt: -1 }))
 })
 
-// POST /api/clases -> crea una clase dentro de una categoría
 router.post('/', async (req, res) => {
-  // Se toman SOLO los campos esperados (no se guarda cualquier cosa que llegue)
   const { categoriaId, fecha, tema, aprendi, noEntendi, notas } = req.body ?? {}
 
   if (!(await Categoria.exists({ _id: categoriaId }))) {
@@ -21,7 +18,6 @@ router.post('/', async (req, res) => {
   res.status(201).json(clase)
 })
 
-// DELETE /api/clases/:id
 router.delete('/:id', async (req, res) => {
   const borrada = await Clase.findByIdAndDelete(req.params.id)
   if (!borrada) return res.status(404).json({ error: 'La clase no existe' })

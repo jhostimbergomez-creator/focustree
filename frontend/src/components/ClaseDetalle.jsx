@@ -1,6 +1,5 @@
 import PanelIA from './PanelIA.jsx'
 
-// Muestra un bloque solo si tiene texto
 function Bloque({ titulo, texto }) {
   if (!texto || !texto.trim()) return null
   return (
@@ -11,7 +10,7 @@ function Bloque({ titulo, texto }) {
   )
 }
 
-// Una clase abierta: sus datos + el panel de IA
+
 function ClaseDetalle({ clase, onVolver, onBorrar }) {
   return (
     <>

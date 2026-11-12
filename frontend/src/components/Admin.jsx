@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api, sesionActiva, cerrarSesion } from '../api'
 
-// Pantalla privada: si no hay sesión muestra el login; si hay, el panel
 function Admin() {
   const [sesion, setSesion] = useState(sesionActiva())
 
@@ -57,7 +56,7 @@ function Login({ onEntrar }) {
 }
 
 function Panel({ onSalir }) {
-  const [datos, setDatos] = useState(null) // null = todavía cargando
+  const [datos, setDatos] = useState(null) 
   const [error, setError] = useState('')
 
   async function cargar() {
@@ -68,7 +67,7 @@ function Panel({ onSalir }) {
       ])
       setDatos({ categorias, clases, mensajes })
     } catch (err) {
-      if (err.status === 401) return onSalir() // sesión vencida: vuelve al login
+      if (err.status === 401) return onSalir() 
       setError(err.message)
     }
   }

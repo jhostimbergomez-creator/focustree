@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const esquema = new mongoose.Schema(
   {
-    // Relación: cada clase pertenece a una categoría (guarda el _id de esa categoría)
+    
     categoriaId: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria', required: [true, 'Falta la categoría'] },
     fecha: {
       type: String,

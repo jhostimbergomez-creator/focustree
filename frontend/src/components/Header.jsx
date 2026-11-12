@@ -1,4 +1,3 @@
-// Barra superior. Cambia sus enlaces según la pantalla en que estemos.
 function Header({ vista }) {
   const enHome = vista === 'home'
 
