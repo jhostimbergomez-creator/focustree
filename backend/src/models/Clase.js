@@ -15,10 +15,10 @@ const esquema = new mongoose.Schema(
     },
     aprendi: {
       type: String, required: [true, 'Cuenta qué aprendiste'], trim: true,
-      minlength: [5, 'Qué aprendí necesita al menos 5 letras'], maxlength: [2000, 'Qué aprendí admite máximo 2000 caracteres']
+      minlength: [5, 'Qué aprendí necesita al menos 5 letras'], maxlength: [4000, 'Qué aprendí admite máximo 4000 caracteres']
     },
-    noEntendi: { type: String, trim: true, default: '', maxlength: [2000, 'Qué no entendí admite máximo 2000 caracteres'] },
-    notas: { type: String, trim: true, default: '', maxlength: [2000, 'Las notas admiten máximo 2000 caracteres'] }
+    noEntendi: { type: String, trim: true, default: '', maxlength: [4000, 'Qué no entendí admite máximo 4000 caracteres'] },
+    notas: { type: String, trim: true, default: '', maxlength: [4000, 'Las notas admiten máximo 4000 caracteres'] }
   },
   { timestamps: true }
 )
