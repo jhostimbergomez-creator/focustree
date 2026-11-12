@@ -252,3 +252,13 @@ textarea { resize: vertical; }
 @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
 }
+
+/* 9. AÑADIDOS PARA REACT ------------------------------------- */
+/* Texto solo para lectores de pantalla (la etiqueta existe pero no se ve) */
+.sr-only {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+}
+/* Aviso del modo en que corre la app */
+.aviso-modo { margin-top: .6rem; font-size: .85rem; color: var(--muted); }
+.fila-acciones { display: flex; gap: .5rem; flex-wrap: wrap; }

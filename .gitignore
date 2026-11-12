@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Resultado de compilar el frontend (se genera con npm run build)
+dist/
+
+# Basura del sistema y del editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
